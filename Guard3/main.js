@@ -25,7 +25,7 @@ const Webhook = new WebhookClient(conf.WEBHOOKID, conf.WEBHOOKTOKEN);
 const STAFPERMS = conf.STAFPERMS
 
 client.on("ready", async() => {
-    client.user.setPresence({ status: "invisible" });
+    client.user.setPresence({ status: "online" });
     let kanal = client.channels.cache.filter(x => x.type === "voice" && x.id === conf.VOICECHANNEL)
     client.channels.cache.get(conf.VOICECHANNEL).join().then(x => console.log("Bot başarılı bir şekilde ses kanalına bağlandı")).catch(() => console.log("Bot ses kanalına bağlanırken bir sorun çıktı Lütfen Yetkileri kontrol ediniz!"))
 
@@ -83,7 +83,7 @@ function Punish(kisiID, tur) {
     let MEMBER = client.guilds.cache.get(conf.guildID).members.cache.get(kisiID);
     if (!MEMBER) return;
     if (tur == "jail") return MEMBER.roles.cache.has(conf.BOOSTERROLE) ? MEMBER.roles.set([conf.BOOSTERROLE, conf.JAILROLE]) : MEMBER.roles.set([conf.JAILROLE]).catch()
-    if (tur == "ban") return MEMBER.ban({ reason: "Owsla and Zeze Guard" }).catch(console.error);;
+    if (tur == "ban") return MEMBER.ban({ reason: "Wolyo Guard" }).catch(console.error);;
     if (tur == "kick") return MEMBER.kick().catch(console.error);;
 };
 
@@ -108,7 +108,7 @@ var sagTikRolKoruma = [],
         Punish(entry.executor.id, "kick");
         AuthorzedRoles(channel.guild.id);
       
-        await channel.clone({ reason: "Zeze Kanal Koruma" }).then(async kanal => {
+        await channel.clone({ reason: "Wolyo Kanal Koruma" }).then(async kanal => {
           if (channel.parentID != null) await kanal.setParent(channel.parentID);
           await kanal.setPosition(channel.position);
           if (channel.type == "category") await channel.guild.channels.cache.filter(k => k.parentID == channel.id).forEach(x => x.setParent(kanal.id));
@@ -193,4 +193,4 @@ client.on("guildUpdate", async (oldGuild, newGuild) => {
       });
     }
   });
-client.login(conf.TOKEN2).then(c => console.log(`${client.user.tag} Olarak Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
+client.login(process.env.token3).then(c => console.log(`${client.user.tag} Olarak Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
