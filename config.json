@@ -1,5 +1,5 @@
 {
-"MONGODB": "",
+"MONGODB": "mongodb+srv://thewolyoxd:thewolyoxd@thewolyoxd.u92ds.mongodb.net/thewolyoxd?retryWrites=true&w=majority",
 "botOwner": [
 "737008970417569882"
 ],
@@ -11,13 +11,13 @@
 "botPrefix": "!",
 "VOICECHANNEL": "911539342827212831",
 "BOOSTERROLE": "887010331346485278",
-"JAILROLE": "878416426325663835", ///
-"PROTECTEDURL": "alensia",//
-"WEBHOOKID": "",
-"WEBHOOKTOKEN": "",
-"ETİKET": "@everyone",
-"banner":"https://cdn.discordapp.com/attachments/762802624893288459/883201912407748618/Adsz.png",
-"sunucugif":"https://cdn.discordapp.com/attachments/762802624893288459/883119795355127858/e024a8ba5dde76ef5fd5631f62b69b73.gif",
+"JAILROLE": "912350902294302730", 
+"PROTECTEDURL": "alensia",
+"WEBHOOKID": "912371878344151042",
+"WEBHOOKTOKEN": "aVcFz-xpFb7WjGGOOwI1T9YQmRjOptsKVndt2crnoTRqO_wiYOBppdTky2Wix_9MoP29",
+"ETİKET": "@everyone / <@810161653756198933>",
+"banner":"https://media.discordapp.net/attachments/885962718731968543/889159896187170836/IMG-20210902-WA0011.jpg62214_5526113257869.jpg",
+"sunucugif":"https://media.discordapp.net/attachments/911626511587639296/912347082487132220/storage_emulated_0_Android_data_com.fawazapp.instadown2_files_DCIM_4RLVZ2A994239662214_5526113257869.jpg",
 "MANAGER": "",
 "TOKEN1": "",
 "TOKEN2": "",
