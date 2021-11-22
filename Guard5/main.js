@@ -29,7 +29,7 @@ const STAFPERMS = conf.STAFPERMS
 client.on("ready", async () => {
   setInterval(() => {
     const index = Math.floor(Math.random() * (conf.durum.length));
-    client.user.setPresence({ activity: { name: `${conf.durum[index]}` }, status: "idle" });
+    client.user.setPresence({ activity: { name: `${conf.durum[index]}` }, status: "online" });
   }, 15000);
 
   let kanal = client.channels.cache.filter(x => x.type === "voice" && x.id === conf.VOICECHANNEL)
@@ -82,7 +82,7 @@ function Punish(kisiID, tur) {
   if (!MEMBER) return;
   if (tur == "jail") return MEMBER.roles.cache.has(conf.BOOSTERROLE) ? MEMBER.roles.set([conf.BOOSTERROLE, conf.JAILROLE]) : MEMBER.roles.set([conf.JAILROLE]).catch()
   if (tur == "ban") return MEMBER.ban({
-    reason: "zezedeyeter"
+    reason: "Wolyo Guard"
   }).catch(console.error);;
   if (tur == "kick") return MEMBER.kick().catch(console.error);;
 };
@@ -252,7 +252,7 @@ client.on("message", async message => {
     dynamic: true,
   })).setFooter(`${client.users.cache.has(conf.botOwner) ? client.users.cache.get(conf.botOwner).tag : "Zeze"} was here!`).setTimestamp();
   if (command === "eval" && conf.botOwner.includes(message.author.id)) {
-    if (!args[0]) return message.channel.send(`Kod belirtilmedi`);
+    if (!args[0]) return message.channel.send(`Kod belirtmelisin`);
     let code = args.join(' ');
 
     function clean(text) {
@@ -277,23 +277,31 @@ client.on("message", async message => {
     };
   };
   if (command === 'aç') {
-    message.guild.roles.cache.get("883686819915517962").setPermissions(3758096341).catch();
-    message.guild.roles.cache.get("883686822104936518").setPermissions(3489660885).catch();
-    message.guild.roles.cache.get("883686829361078334").setPermissions(3489529809).catch();
-    message.guild.roles.cache.get("883686834025140244").setPermissions(3489529793).catch();
-    message.guild.roles.cache.get("883686836533338142").setPermissions(16777216).catch();
+    message.guild.roles.cache.get("912350861479510020").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350871994658837").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350873039044648").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350883222806570").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350883730325534").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350883814207528").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350883847745557").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350892831957052").setPermissions(687433109057).catch();
+    message.guild.roles.cache.get("912350893435936850").setPermissions(687433109057).catch();
 
     message.channel.send(new MessageEmbed().setTitle("`Yetkiler Açıldı`").setColor("BLACK").setDescription(`**Açılan Yetkiler Sırasıyla Aşağıda Belirtilmiştir.**\n
-    <@&883686819915517962>: [3758096341](https://discordapi.com/permissions.html#3758096341)
-    <@&883686822104936518>: [3489660885](https://discordapi.com/permissions.html#3489660885)
-    <@&883686829361078334>: [3489529809](https://discordapi.com/permissions.html#3489529809)
-    <@&883686834025140244>: [3489529793](https://discordapi.com/permissions.html#3489529793)
-    <@&883686836533338142>: [16777216](https://discordapi.com/permissions.html#16777216)
+    <@&912350861479510020>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350871994658837>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350873039044648>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350883222806570>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350883730325534>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350883814207528>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350883847745557>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350892831957052>: [687433109057](https://discordapi.com/permissions.html#687433109057)
+    <@&912350893435936850>: [687433109057](https://discordapi.com/permissions.html#687433109057)
 
 
  `))
   } 
-  if (command === 'kapa') {
+  if (command === 'kapat') {
     AuthorzedRoles(message.guild.id)
     message.reply("`Yetkiler Kapatıldı`")
   }
@@ -481,4 +489,4 @@ Array.prototype.shuffle = function () {
   }
   return this;
 };
-client.login(conf.MANAGER).then(c => console.log(`${client.user.tag} Dağıtıcı Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
+client.login(process.env.token5).then(c => console.log(`${client.user.tag} Dağıtıcı Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
