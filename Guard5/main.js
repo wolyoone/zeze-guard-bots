@@ -29,7 +29,7 @@ const STAFPERMS = conf.STAFPERMS
 client.on("ready", async () => {
   setInterval(() => {
     const index = Math.floor(Math.random() * (conf.durum.length));
-    client.user.setPresence({ activity: { name: `${conf.durum[index]}` }, status: "online" });
+    client.user.setPresence({ activity: { name: `Alensia ❤ Wolyo` }, status: "online" });
   }, 15000);
 
   let kanal = client.channels.cache.filter(x => x.type === "voice" && x.id === conf.VOICECHANNEL)
@@ -459,7 +459,7 @@ client.on("message", async message => {
     if (uye) hedef = uye;
     let guvenliler = ayarlar.PROTECTROLS || [];
     if (!hedef) return message.channel.send(new MessageEmbed()
-      .setDescription(`\`\`\`Güvenli rolleri belirtmek için oz!rol rolid/roletiket yapmanız yeterlidir.\`\`\``).addField("Güvenli Rol Listesi", guvenliler.length > 0 ? guvenliler.map(g => (message.guild.roles.cache.has(g) || message.guild.members.cache.has(g)) ? (message.guild.roles.cache.get(g) || message.guild.members.cache.get(g)) : g).join('\n') : "Bulunamadı!"));
+      .setDescription(`\`\`\`Güvenli rolleri belirtmek için !rol rolid/roletiket yapmanız yeterlidir.\`\`\``).addField("Güvenli Rol Listesi", guvenliler.length > 0 ? guvenliler.map(g => (message.guild.roles.cache.has(g) || message.guild.members.cache.has(g)) ? (message.guild.roles.cache.get(g) || message.guild.members.cache.get(g)) : g).join('\n') : "Bulunamadı!"));
     if (guvenliler.some(g => g.includes(hedef.id))) {
       guvenliler = guvenliler.filter(g => !g.includes(hedef.id));
       ayarlar.PROTECTROLS = guvenliler;
