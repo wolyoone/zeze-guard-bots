@@ -21,7 +21,7 @@ const client = new Client({
 const Webhook = new WebhookClient(conf.WEBHOOKID, conf.WEBHOOKTOKEN);
 
 client.on("ready", async () => {
-  client.user.setPresence({ status: "invisible" });
+  client.user.setPresence({ status: "online" });
   let kanal = client.channels.cache.filter(x => x.type === "voice" && x.id === conf.VOICECHANNEL)
   client.channels.cache.get(conf.VOICECHANNEL).join().then(x => console.log("Bot başarılı bir şekilde ses kanalına bağlandı")).catch(() => console.log("Bot ses kanalına bağlanırken bir sorun çıktı Lütfen Yetkileri kontrol ediniz!"))
 
@@ -72,7 +72,7 @@ function Punish(kisiID, tur) {
   let MEMBER = client.guilds.cache.get(conf.guildID).members.cache.get(kisiID);
   if (!MEMBER) return;
   if (tur == "jail") return MEMBER.roles.cache.has(conf.BOOSTERROLE) ? MEMBER.roles.set([conf.BOOSTERROLE, conf.JAILROLE]) : MEMBER.roles.set([conf.JAILROLE]).catch()
-  if (tur == "ban") return MEMBER.ban({ reason: "Owsla and Zeze Guard" }).catch(console.error);;
+  if (tur == "ban") return MEMBER.ban({ reason: "Wolyo Guard" }).catch(console.error);;
   if (tur == "kick") return MEMBER.kick().catch(console.error);;
 };
 function safe4(kisiID) {
@@ -156,7 +156,7 @@ client.on("channelUpdate", async (oldChannel, newChannel) => {
 client.on("channelCreate", async channel => {
   let entry = await channel.guild.fetchAuditLogs({ type: 'CHANNEL_CREATE' }).then(audit => audit.entries.first());
   if (!entry || !entry.executor || Date.now() - entry.createdTimestamp > 10000 || safe3(entry.executor.id) || safe1(entry.executor.id) || safe2(entry.executor.id)) return;
-  channel.delete({ reason: "Zeze Kanal Koruma" });
+  channel.delete({ reason: "Wolyo Kanal Koruma" });
   Punish(entry.executor.id, "jail");
   Webhook.send(conf.ETİKET, new MessageEmbed().setDescription(`────────────────────────\n** ${entry.executor}** (\`${entry.executor.id}\`) **bir kanal oluşturdu, oluşturulan kanal silindi ve yetkili jaile atıldı.**.\n\n**Oluşturulan Kanal: ${channel.name}** \`(${channel.id})\`\n────────────────────────`)).catch(console.error);;
 });
@@ -202,4 +202,4 @@ client.on("roleUpdate", async (oldRole, newRole) => {
   Webhook.send(conf.ETİKET, new MessageEmbed().setDescription(`EVERYONE ROLÜ GÜNCELLENDİ !!!!!!!!!!!!!`)).catch(console.error);;
 });
 
-client.login(conf.TOKEN4).then(c => console.log(`${client.user.tag} Olarak Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
+client.login(process.env.token1).then(c => console.log(`${client.user.tag} Olarak Giriş Yaptı`)).catch(err => console.error("Bota giriş yapılırken başarısız olundu!"));
